@@ -1,8 +1,7 @@
 import React from "react";
-import Navbar from "./Navbar/Navbar";
-import Search from "./Search/Search";
-import CountriesList from "./CountriesList/CountriesList";
-import "./App.scss";
+import Navbar from "./components/Navbar";
+import Search from "./components/Search";
+import CountriesList from "./components/CountriesList";
 
 function App() {
   return (
