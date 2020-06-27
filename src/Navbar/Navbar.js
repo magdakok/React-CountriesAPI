@@ -4,8 +4,8 @@ import "./Navbar.scss";
 function Navbar(props) {
   return (
     <nav class='Navbar'>
-      <h1>Where in the world?</h1>
-      <div>Dark mode</div>
+      <h1 className='main-heading'>Where in the world?</h1>
+      <div className='color-mode'>Dark Mode</div>
     </nav>
   );
 }
