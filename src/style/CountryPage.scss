@@ -1,0 +1,33 @@
+@import "./variables.scss";
+
+.CountryPage {
+  padding: 39px 30px;
+
+  &__container {
+    margin-top: 30px;
+  }
+
+  &__flagBox {
+    margin: 40px 0;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+
+  &__heading-country {
+    font-size: 25px;
+  }
+  &__backButton {
+    background-color: $color-white;
+    font-size: 13px;
+    color: inherit;
+    border: none;
+    box-shadow: $box-shadow;
+    padding: 10px 30px;
+
+    .fas {
+      margin-right: 8px;
+    }
+  }
+}
