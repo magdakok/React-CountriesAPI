@@ -4,7 +4,7 @@ import "./../style/Loading.scss";
 function Loading() {
   return (
     <div className='Loading'>
-      <i class='Loading-icon fas fa-globe-americas'></i>
+      <i className='Loading-icon fas fa-globe-americas'></i>
       <span className='Loading-text'>Loading countries...</span>
     </div>
   );
