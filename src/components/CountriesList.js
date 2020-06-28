@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import CountryPreview from "./CountryPreview";
 import "./../style/CountriesList.scss";
 import Axios from "axios";
+import Loading from "./Loading";
 
 const API_URL = "https://restcountries.eu/rest/v2/";
-const nCountriesToGet = 20;
+const nCountriesToGet = 10;
 
 function CountriesList(props) {
   const [countries, setCountries] = useState();
@@ -21,14 +23,15 @@ function CountriesList(props) {
   return (
     <main className='CountriesList'>
       {isLoading ? (
-        <div className='CountriesList__loading'>
-          <i class='CountriesList__loading-icon fas fa-globe-americas'></i>
-          <span className='CountriesList__loading-text'>
-            Loading countries...
-          </span>
-        </div>
+        <Loading />
       ) : (
-        <h2> NOT LOADING</h2>
+        countries.map((c, i) => {
+          if (i < nCountriesToGet) {
+            return <CountryPreview country={c.name} />;
+          } else {
+            return;
+          }
+        })
       )}
     </main>
   );
