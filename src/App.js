@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CountriesList from "./components/CountriesList";
 import CountryPage from "./components/CountryPage";
+import NotFound from "./components/NotFound";
 import "./style/App.scss";
 
 function App() {
