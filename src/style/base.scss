@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 *,
 *::after,
@@ -11,7 +11,6 @@
 
 body {
   box-sizing: border-box;
-  width: 100vw;
   height: 100vh;
   font-family: "Nunito Sans", sans-serif;
   color: $color-black;
