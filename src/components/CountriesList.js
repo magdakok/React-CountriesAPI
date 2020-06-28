@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import "./../style/CountriesList.scss";
 
 function CountriesList(props) {
-  return <h2>CountriesList</h2>;
+  return (
+    <main className='CountriesList'>
+      <h2>Countries:</h2>
+    </main>
+  );
 }
 
 export default CountriesList;
