@@ -2,6 +2,10 @@ import React from "react";
 import "./../style/CountryPreview.scss";
 
 function CountryPreview(props) {
+  const populationWithComas = props.population
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   return (
     <div className='CountryPreview'>
       <img
@@ -14,7 +18,7 @@ function CountryPreview(props) {
         {props.population && (
           <div className='CountryPreview__row'>
             <h3 className='CountryPreview__heading-minor'>Population:</h3>
-            {props.population}
+            {populationWithComas}
           </div>
         )}
         {props.region && (
