@@ -17,7 +17,7 @@ function CountryPreview(props) {
       <div className='CountryPreview__box'>
         <div className='CountryPreview__info'>
           <h2 className='CountryPreview__heading-country'>{props.country}</h2>
-          {props.population && (
+          {props.population > 0 && (
             <div className='CountryPreview__row'>
               <h3 className='CountryPreview__heading-minor'>Population:</h3>
               {populationWithComas}
