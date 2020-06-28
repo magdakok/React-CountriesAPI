@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 import "./../style/CountryPreview.scss";
 
 function CountryPreview(props) {
