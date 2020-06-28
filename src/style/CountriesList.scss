@@ -2,4 +2,9 @@
 
 .CountriesList {
   padding: 39px $horizontal-padding-mobile;
+
+  @media only screen and (min-width: 400px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
