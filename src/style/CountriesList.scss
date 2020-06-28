@@ -2,4 +2,31 @@
 
 .CountriesList {
   padding: 23px $horizontal-padding-mobile;
+
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 200px;
+
+    &-icon {
+      font-size: 60px;
+      color: $color-gray;
+      border-radius: 50%;
+      box-shadow: $box-shadow;
+      margin-bottom: 20px;
+      animation: rotation 3s infinite linear;
+    }
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
