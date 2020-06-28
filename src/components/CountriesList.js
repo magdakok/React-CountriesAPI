@@ -27,7 +27,15 @@ function CountriesList(props) {
       ) : (
         countries.map((c, i) => {
           if (i < nCountriesToGet) {
-            return <CountryPreview country={c.name} />;
+            return (
+              <CountryPreview
+                country={c.name}
+                flag={c.flag}
+                population={c.population}
+                region={c.subregion}
+                capital={c.capital}
+              />
+            );
           } else {
             return;
           }
