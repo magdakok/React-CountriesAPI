@@ -1,7 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./../style/CountryPage.scss";
 
 function CountryPage(props) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [country, setCountry] = useState("");
+  const { code } = useParams();
+
+  const { countries } = props;
+
+  console.log(`Outside useEffect:${countries}`);
+
+  useEffect(() => {
+    console.log(`Outside useEffect:${countries}`);
+    let pickedCountry = countries.find((c) => {
+      return code.toLowerCase() === c.alpha3Code.toLowerCase();
+    });
+    setCountry(pickedCountry);
+    setIsLoading(false);
+  }, []);
+
   // const info = [
   //   { "Native Name": nativeName },
   //   { Population: population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") },

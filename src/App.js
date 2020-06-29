@@ -59,9 +59,9 @@ function App() {
             return isLoading ? <Loading /> : renderMainContent;
           }}
         />
-        {/* <Route exact path='/:code'>
-          <CountryPage />
-        </Route> */}
+        <Route exact path='/:code'>
+          <CountryPage countries={countries} />
+        </Route>
         <Route component={NotFound} />
       </Switch>
     </div>
