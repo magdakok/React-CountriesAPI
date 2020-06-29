@@ -39,6 +39,15 @@ function App() {
     setFilteredCountries(updatedCountries);
   };
 
+  let renderMainContent = (
+    <>
+      <Search filterCountries={filterCountries} />
+      <CountriesList
+        countries={filteredCountries.length ? filteredCountries : countries}
+      />
+    </>
+  );
+
   return (
     <div className='App'>
       <Navbar />
@@ -47,18 +56,7 @@ function App() {
           exact
           path='/'
           render={() => {
-            return isLoading ? (
-              <Loading />
-            ) : (
-              <>
-                <Search filterCountries={filterCountries} />
-                <CountriesList
-                  countries={
-                    filteredCountries.length ? filteredCountries : countries
-                  }
-                />
-              </>
-            );
+            return isLoading ? <Loading /> : renderMainContent;
           }}
         />
         {/* <Route exact path='/:code'>
