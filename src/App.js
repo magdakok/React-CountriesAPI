@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import CountriesList from "./components/CountriesList";
 import CountryPage from "./components/CountryPage";
 import NotFound from "./components/NotFound";
+import Search from "./components/Search";
 import "./style/App.scss";
 import Axios from "axios";
 import Loading from "./components/Loading";
@@ -16,6 +17,7 @@ function App() {
   );
 
   const [countries, setCountries] = useState(initCountries);
+  const [filteredCountries, setFilteredCountries] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -44,9 +46,17 @@ function App() {
     }
   };
 
+  const filterCountries = (value) => {
+    let updatedCountries = countries.filter((c) => {
+      return c.name.toLowerCase().includes(value.toLowerCase());
+    });
+    setFilteredCountries(updatedCountries);
+  };
+
   return (
     <div className='App'>
       <Navbar />
+      <Search filterCountries={filterCountries} />
       <Switch>
         <Route
           exact
@@ -55,7 +65,11 @@ function App() {
             return isLoading ? (
               <Loading />
             ) : (
-              <CountriesList countries={countries} />
+              <CountriesList
+                countries={
+                  filteredCountries.length ? filteredCountries : countries
+                }
+              />
             );
           }}
         />
