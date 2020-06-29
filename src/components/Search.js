@@ -3,7 +3,7 @@ import "./../style/Search.scss";
 import useInputState from "./../hooks/useInputState";
 
 function Search(props) {
-  const [value, handleChange, reset] = useInputState("");
+  const [value, handleChange] = useInputState("");
 
   useEffect(() => {
     props.filterCountries(value);
