@@ -2,7 +2,7 @@ import React from "react";
 import CountryPreview from "./CountryPreview";
 import "./../style/CountriesList.scss";
 
-const nCountriesToGet = 10;
+const nCountriesToGet = 40;
 
 function CountriesList(props) {
   const { countries } = props;
@@ -17,8 +17,8 @@ function CountriesList(props) {
               population={c.population}
               region={c.subregion}
               capital={c.capital}
-              key={c.alpha2Code}
-              id={c.alpha2Code}
+              key={c.alpha3Code}
+              id={c.alpha3Code}
             />
           );
         } else {

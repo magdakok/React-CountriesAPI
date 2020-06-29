@@ -1,21 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./../style/CountryPage.scss";
 
 function CountryPage(props) {
-  const {
-    flag,
-    name,
-    nativeName,
-    population,
-    region,
-    subregion,
-    capital,
-    topLevelDomain,
-    currencies,
-    languages,
-    borders,
-  } = props.country;
-
   // const info = [
   //   { "Native Name": nativeName },
   //   { Population: population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") },
@@ -37,7 +23,7 @@ function CountryPage(props) {
   //  TO FUTURE MAGDA: make helper function that returns nice array with formatted data to strings!
   return (
     <div className='CountryPage'>
-      <button className='CountryPage__backButton'>
+      {/* <button className='CountryPage__backButton'>
         <i className='fas fa-long-arrow-alt-left'></i> Back
       </button>{" "}
       <div className='CountryPage__container'>
@@ -47,10 +33,10 @@ function CountryPage(props) {
         <div className='CountryPage__infoBox'>
           <h2 className='CountryPage__heading-country'>{name}</h2>
           <ul className='CountryPage__info'>
-            {/*here render all info items*/}
+           
           </ul>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

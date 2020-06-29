@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CountriesList from "./components/CountriesList";
 import CountryPage from "./components/CountryPage";
@@ -30,21 +30,7 @@ function App() {
       getData();
     }
     setIsLoading(false);
-  });
-
-  const pickCountry = (props) => {
-    let pickedDcountry = props.match.params.country;
-    let currentCountry = countries.find((c) => {
-      return (
-        //just first word from the string and lowercase
-        c.name.replace(/ .*/, "").toLowerCase() === pickedDcountry.toLowerCase()
-      );
-    });
-    if (currentCountry === undefined) {
-    } else {
-      return <CountryPage {...props} country={currentCountry} />;
-    }
-  };
+  }, [countries]);
 
   const filterCountries = (value) => {
     let updatedCountries = countries.filter((c) => {
@@ -56,7 +42,6 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
-      <Search filterCountries={filterCountries} />
       <Switch>
         <Route
           exact
@@ -65,15 +50,20 @@ function App() {
             return isLoading ? (
               <Loading />
             ) : (
-              <CountriesList
-                countries={
-                  filteredCountries.length ? filteredCountries : countries
-                }
-              />
+              <>
+                <Search filterCountries={filterCountries} />
+                <CountriesList
+                  countries={
+                    filteredCountries.length ? filteredCountries : countries
+                  }
+                />
+              </>
             );
           }}
         />
-        <Route exact path='/:country' render={pickCountry} />
+        {/* <Route exact path='/:code'>
+          <CountryPage />
+        </Route> */}
         <Route component={NotFound} />
       </Switch>
     </div>
