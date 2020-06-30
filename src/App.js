@@ -30,7 +30,7 @@ function App() {
       getData();
     }
     setIsLoading(false);
-  }, [countries]);
+  }, []);
 
   const filterCountries = (value) => {
     let updatedCountries = countries.filter((c) => {
@@ -40,16 +40,12 @@ function App() {
   };
 
   const getCountry = (code) => {
-    if (countries.length === 0) {
-      async function getData() {
-        const response = await Axios.get(`${API_URL}alpha/${code}`);
-        console.log(response.data);
-        return response.data;
-      }
-      return getData();
-    } else {
-      //filter countries state and return one
+    async function getData() {
+      const response = await Axios.get(`${API_URL}alpha/${code}`);
+      console.log(response.data);
+      return response.data;
     }
+    return getData();
   };
 
   let renderMainContent = (
