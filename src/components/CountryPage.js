@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Loading from "./Loading";
 import "./../style/CountryPage.scss";
 import InfoRow from "./InfoRow";
@@ -35,10 +35,7 @@ function CountryPage(props) {
         { Capital: country.capital },
         { "Top Level Domain": country.topLevelDomain.join(", ") },
         {
-          Currencies:
-            country.currencies.length > 1
-              ? currenciesToString(country.currencies)
-              : `${country.currencies[0].code}: ${country.currencies[0].name} (${country.currencies[0].symbol})`,
+          Currencies: currenciesToString(country.currencies),
         },
         { Languages: languagesToString(country.languages) },
         { Borders: bordersToString(country.borders) },
@@ -49,7 +46,7 @@ function CountryPage(props) {
   function currenciesToString(arr) {
     let strings = [];
     arr.forEach((el) => {
-      strings.push(`${el.code} / ${el.name} (${el.symbol})`);
+      strings.push(`${el.code} ${el.name} (${el.symbol})`);
     });
     return strings.join(", ");
   }
@@ -72,9 +69,11 @@ function CountryPage(props) {
 
   let renderMainContent = (
     <div className='CountryPage'>
-      <button className='CountryPage__backButton'>
-        <i className='fas fa-long-arrow-alt-left'></i> Back
-      </button>{" "}
+      <Link to='./'>
+        <button className='CountryPage__backButton'>
+          <i className='fas fa-long-arrow-alt-left'></i> Back
+        </button>
+      </Link>
       <div className='CountryPage__container'>
         <div className='CountryPage__flagBox'>
           <img src={country.flag} alt={`Flag of ${country.name}`} />
