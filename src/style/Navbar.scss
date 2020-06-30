@@ -11,12 +11,22 @@
   justify-content: space-between;
   align-items: center;
 
+  @media only screen and (min-width: 700px) {
+    padding: 0 $horizontal-padding-desktop;
+  }
+
   .main-heading {
     font-size: 14px;
+    @media only screen and (min-width: 700px) {
+      font-size: 24px;
+    }
   }
 
   .color-mode {
     font-size: 13px;
+    @media only screen and (min-width: 700px) {
+      font-size: 17px;
+    }
     .fas {
       margin-right: 5px;
     }
