@@ -1,9 +1,10 @@
 import React from "react";
+import "./../style/InfoRow.scss";
 
 function InfoRow(props) {
   const { title, value } = props;
   return (
-    <li>
+    <li className='InfoRow'>
       <span>{title}: </span> {value}
     </li>
   );
