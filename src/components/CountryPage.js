@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./../style/CountryPage.scss";
 
 function CountryPage(props) {
+  console.log(props.country);
   // const info = [
   //   { "Native Name": nativeName },
   //   { Population: population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") },
