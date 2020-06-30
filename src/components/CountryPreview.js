@@ -8,7 +8,7 @@ function CountryPreview(props) {
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return (
-    <Link exact to={`${props.id}`}>
+    <Link to={`${props.id}`}>
       <div className='CountryPreview'>
         <img
           className='CountryPreview__flag'
