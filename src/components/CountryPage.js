@@ -38,7 +38,7 @@ function CountryPage(props) {
           Currencies: currenciesToString(country.currencies),
         },
         { Languages: languagesToString(country.languages) },
-        { Borders: bordersToString(country.borders) },
+        // { Borders: bordersToString(country.borders) },
       ]);
     }
   }, [isLoading]);

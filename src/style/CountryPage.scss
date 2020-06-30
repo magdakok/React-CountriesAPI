@@ -3,19 +3,24 @@
 .CountryPage {
   padding: 39px 30px;
 
+  @media only screen and (min-width: 700px) {
+    padding: 81px $horizontal-padding-desktop;
+  }
+
   &__container {
     margin-top: 30px;
     @media only screen and (min-width: 700px) {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      margin-top: 75px;
     }
   }
 
   &__flagBox {
-    margin: 40px 0;
+    margin: 20px 0;
     width: 100%;
     @media only screen and (min-width: 700px) {
-      width: 30%;
+      flex: 0 1 44%;
       margin-top: 0;
     }
     img {
@@ -25,18 +30,24 @@
 
   &__infoBox {
     @media only screen and (min-width: 700px) {
-      margin-left: 5%;
+      flex: 0 0 47%;
+      align-self: center;
     }
   }
 
   &__info {
-    @media only screen and (min-width: 700px) {
-      line-height: 28px;
-    }
+    height: 140px;
+    line-height: 28px;
+    column-count: 2;
+    column-gap: 0px;
   }
 
   &__heading-country {
-    font-size: 25px;
+    font-size: 22px;
+    margin-bottom: 24px;
+    @media only screen and (min-width: 700px) {
+      font-size: 33px;
+    }
   }
   &__backButton {
     background-color: $color-white;
@@ -45,7 +56,18 @@
     border: none;
     box-shadow: $box-shadow;
     padding: 10px 30px;
+    transition: all 0.2s;
+    cursor: pointer;
+    @media only screen and (min-width: 700px) {
+      padding: 10px 34px;
+      font-size: 18px;
+    }
 
+    &:hover,
+    &:active {
+      box-shadow: 0px 3px 10px -8px rgb(114, 114, 114);
+      transform: scale(1.03);
+    }
     .fas {
       margin-right: 8px;
     }
