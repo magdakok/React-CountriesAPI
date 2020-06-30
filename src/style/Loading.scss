@@ -14,11 +14,11 @@
     border-radius: 50%;
     box-shadow: $box-shadow;
     margin-bottom: 20px;
-    animation: rotation 3s infinite linear;
+    animation: rotationRound 3s infinite linear;
   }
 }
 
-@keyframes rotation {
+@keyframes rotationRound {
   from {
     transform: rotate(0deg);
   }
