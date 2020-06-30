@@ -17,7 +17,7 @@ function App() {
   );
 
   const [countries, setCountries] = useState(initCountries);
-  const [filteredCountries, setFilteredCountries] = useState("");
+  const [filteredCountries, setFilteredCountries] = useState(initCountries);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -33,6 +33,7 @@ function App() {
   }, []);
 
   const filterCountries = (value) => {
+    if (!value) return setFilteredCountries(countries);
     let updatedCountries = countries.filter((c) => {
       return c.name.toLowerCase().includes(value.toLowerCase());
     });
@@ -51,9 +52,7 @@ function App() {
   let renderMainContent = (
     <>
       <Search filterCountries={filterCountries} />
-      <CountriesList
-        countries={filteredCountries.length ? filteredCountries : countries}
-      />
+      <CountriesList countries={filteredCountries} />
     </>
   );
 
