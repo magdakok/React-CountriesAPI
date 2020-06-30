@@ -1,8 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./../style/CountryPage.scss";
 
 function CountryPage(props) {
   console.log(props.country);
+
+  const [country, setCountry] = useState("");
+  const { code } = useParams();
+
+  useEffect(() => {
+    async function getData() {
+      const newCountry = await props.getCountry(code);
+      setCountry(newCountry);
+    }
+    getData();
+  }, []);
+
   // const info = [
   //   { "Native Name": nativeName },
   //   { Population: population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") },

@@ -30,8 +30,7 @@ function App() {
       getData();
     }
     setIsLoading(false);
-    filterCountries();
-  }, [countries]);
+  }, []);
 
   const filterCountries = (value) => {
     if (!value) return setFilteredCountries(countries);
@@ -39,6 +38,15 @@ function App() {
       return c.name.toLowerCase().includes(value.toLowerCase());
     });
     setFilteredCountries(updatedCountries);
+  };
+
+  const getCountry = (code) => {
+    async function getData() {
+      const response = await Axios.get(`${API_URL}alpha/${code}`);
+      console.log(response.data);
+      return response.data;
+    }
+    return getData();
   };
 
   let renderMainContent = (
@@ -59,9 +67,9 @@ function App() {
             return isLoading ? <Loading /> : renderMainContent;
           }}
         />
-        {/* <Route exact path='/:code'>
-          <CountryPage />
-        </Route> */}
+        <Route exact path='/:code'>
+          <CountryPage getCountry={getCountry} />
+        </Route>
         <Route component={NotFound} />
       </Switch>
     </div>
