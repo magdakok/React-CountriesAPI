@@ -44,7 +44,6 @@ function App() {
   const getCountry = (code) => {
     async function getData() {
       const response = await Axios.get(`${API_URL}alpha/${code}`);
-      console.log(response.data);
       return response.data;
     }
     return getData();

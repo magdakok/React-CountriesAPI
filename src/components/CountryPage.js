@@ -1,58 +1,102 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "./Loading";
 import "./../style/CountryPage.scss";
+import InfoRow from "./InfoRow";
+// import Axios from "axios";
+// const API_URL = "https://restcountries.eu/rest/v2/";
 
 function CountryPage(props) {
-  console.log(props.country);
-
   const [country, setCountry] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const { code } = useParams();
+  const [info, setInfo] = useState([]);
 
   useEffect(() => {
     async function getData() {
       const newCountry = await props.getCountry(code);
-      setCountry(newCountry);
+      setCountry(await newCountry);
+      setIsLoading(false);
     }
     getData();
   }, []);
 
-  // const info = [
-  //   { "Native Name": nativeName },
-  //   { Population: population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") },
-  //   { Region: region },
-  //   { "Sub Region": subregion },
-  //   { Capital: capital },
-  //   { "Top Level Domain": topLevelDomain.join(", ") },
-  //   {
-  //     Currencies:
-  //       currencies.length > 1
-  //         ? "a lot"
-  //         : `${currencies[0].code}: ${currencies[0].name} (${currencies[0].symbol})`,
-  //   },
-  //   { Languages: languages },
-  //   { Borders: borders },
-  // ];
-  // console.log(info);
+  useEffect(() => {
+    if (!isLoading) {
+      setInfo([
+        { "Native Name": country.nativeName },
+        {
+          Population: country.population
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+        },
+        { Region: country.region },
+        { "Sub Region": country.subregion },
+        { Capital: country.capital },
+        { "Top Level Domain": country.topLevelDomain.join(", ") },
+        {
+          Currencies:
+            country.currencies.length > 1
+              ? currenciesToString(country.currencies)
+              : `${country.currencies[0].code}: ${country.currencies[0].name} (${country.currencies[0].symbol})`,
+        },
+        { Languages: languagesToString(country.languages) },
+        { Borders: bordersToString(country.borders) },
+      ]);
+    }
+  }, [isLoading]);
 
-  //  TO FUTURE MAGDA: make helper function that returns nice array with formatted data to strings!
-  return (
+  function currenciesToString(arr) {
+    let strings = [];
+    arr.forEach((el) => {
+      strings.push(`${el.code} / ${el.name} (${el.symbol})`);
+    });
+    return strings.join(", ");
+  }
+
+  function languagesToString(arr) {
+    let strings = [];
+    arr.forEach((el) => {
+      strings.push(`${el.name} (${el.nativeName})`);
+    });
+    return strings.join(", ");
+  }
+
+  function bordersToString(arr) {
+    let strings = [];
+    arr.forEach((el) => {
+      strings.push(`${el}`);
+    });
+    return strings.join(", ");
+  }
+
+  let renderMainContent = (
     <div className='CountryPage'>
-      {/* <button className='CountryPage__backButton'>
+      <button className='CountryPage__backButton'>
         <i className='fas fa-long-arrow-alt-left'></i> Back
       </button>{" "}
       <div className='CountryPage__container'>
         <div className='CountryPage__flagBox'>
-          <img src={flag} alt={`Flag of ${name}`} />
+          <img src={country.flag} alt={`Flag of ${country.name}`} />
         </div>
         <div className='CountryPage__infoBox'>
-          <h2 className='CountryPage__heading-country'>{name}</h2>
+          <h2 className='CountryPage__heading-country'>{country.name}</h2>
           <ul className='CountryPage__info'>
-           
+            {info.map((i) => {
+              return (
+                <InfoRow
+                  title={Object.keys(i)[0]}
+                  value={Object.values(i)[0]}
+                />
+              );
+            })}
           </ul>
         </div>
-      </div> */}
+      </div>
     </div>
   );
+
+  return isLoading ? <Loading /> : renderMainContent;
 }
 
 export default CountryPage;
