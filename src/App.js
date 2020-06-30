@@ -39,6 +39,19 @@ function App() {
     setFilteredCountries(updatedCountries);
   };
 
+  const getCountry = (code) => {
+    if (countries.length === 0) {
+      async function getData() {
+        const response = await Axios.get(`${API_URL}alpha/${code}`);
+        console.log(response.data);
+        return response.data;
+      }
+      return getData();
+    } else {
+      //filter countries state and return one
+    }
+  };
+
   let renderMainContent = (
     <>
       <Search filterCountries={filterCountries} />
@@ -60,7 +73,7 @@ function App() {
           }}
         />
         <Route exact path='/:code'>
-          <CountryPage countries={countries} />
+          <CountryPage getCountry={getCountry} />
         </Route>
         <Route component={NotFound} />
       </Switch>

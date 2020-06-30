@@ -3,21 +3,15 @@ import { useParams } from "react-router-dom";
 import "./../style/CountryPage.scss";
 
 function CountryPage(props) {
-  const [isLoading, setIsLoading] = useState(true);
   const [country, setCountry] = useState("");
   const { code } = useParams();
 
-  const { countries } = props;
-
-  console.log(`Outside useEffect:${countries}`);
-
   useEffect(() => {
-    console.log(`Outside useEffect:${countries}`);
-    let pickedCountry = countries.find((c) => {
-      return code.toLowerCase() === c.alpha3Code.toLowerCase();
-    });
-    setCountry(pickedCountry);
-    setIsLoading(false);
+    async function getData() {
+      const newCountry = await props.getCountry(code);
+      setCountry(newCountry);
+    }
+    getData();
   }, []);
 
   // const info = [
