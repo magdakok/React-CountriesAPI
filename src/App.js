@@ -30,7 +30,8 @@ function App() {
       getData();
     }
     setIsLoading(false);
-  }, []);
+    filterCountries();
+  }, [countries]);
 
   const filterCountries = (value) => {
     if (!value) return setFilteredCountries(countries);
