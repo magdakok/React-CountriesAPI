@@ -15,7 +15,6 @@ function CountryPage(props) {
   useEffect(() => {
     async function getData() {
       const newCountry = await props.getCountry(code);
-      console.log(newCountry);
       if (!newCountry) {
         setNotFound(true);
         setIsLoading(false);
@@ -83,9 +82,13 @@ function CountryPage(props) {
       <div className='CountryPage__infoBox'>
         <h2 className='CountryPage__heading-country'>{country.name}</h2>
         <ul className='CountryPage__info'>
-          {info.map((i) => {
+          {info.map((i, idx) => {
             return (
-              <InfoRow title={Object.keys(i)[0]} value={Object.values(i)[0]} />
+              <InfoRow
+                title={Object.keys(i)[0]}
+                value={Object.values(i)[0]}
+                key={idx}
+              />
             );
           })}
         </ul>
