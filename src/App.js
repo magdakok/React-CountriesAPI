@@ -55,7 +55,12 @@ function App() {
   let renderMainContent = (
     <>
       <Search filterCountries={filterCountries} />
-      <CountriesList countries={filteredCountries} />
+      {console.log(filteredCountries.length)}
+      {filteredCountries.length !== 0 ? (
+        <CountriesList countries={filteredCountries} />
+      ) : (
+        <NotFound />
+      )}
     </>
   );
 
