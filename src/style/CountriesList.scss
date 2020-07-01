@@ -4,19 +4,8 @@
   padding: 39px $horizontal-padding-mobile;
 
   @media only screen and (min-width: 400px) {
-  }
-
-  .infinite-scroll-component__outerdiv {
-    @media only screen and (min-width: 400px) {
-      width: 100%;
-    }
-    .infinite-scroll-component {
-      @media only screen and (min-width: 400px) {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
