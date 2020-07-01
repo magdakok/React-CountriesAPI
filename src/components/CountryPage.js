@@ -3,26 +3,32 @@ import { useParams, Link } from "react-router-dom";
 import Loading from "./Loading";
 import "./../style/CountryPage.scss";
 import InfoRow from "./InfoRow";
-// import Axios from "axios";
-// const API_URL = "https://restcountries.eu/rest/v2/";
+import NotFound from "./NotFound";
 
 function CountryPage(props) {
   const [country, setCountry] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { code } = useParams();
   const [info, setInfo] = useState([]);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     async function getData() {
       const newCountry = await props.getCountry(code);
-      setCountry(await newCountry);
-      setIsLoading(false);
+      console.log(newCountry);
+      if (!newCountry) {
+        setNotFound(true);
+        setIsLoading(false);
+      } else {
+        setCountry(newCountry.data);
+        setIsLoading(false);
+      }
     }
     getData();
   }, []);
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && !notFound) {
       setInfo([
         { "Native Name": country.nativeName },
         {
@@ -59,15 +65,35 @@ function CountryPage(props) {
     return strings.join(", ");
   }
 
-  function bordersToString(arr) {
-    let strings = [];
-    arr.forEach((el) => {
-      strings.push(`${el}`);
-    });
-    return strings.join(", ");
-  }
+  // function bordersToString(arr) {
+  //   let strings = [];
+  //   arr.forEach((el) => {
+  //     strings.push(`${el}`);
+  //   });
+  //   return strings.join(", ");
+  // }
 
-  let renderMainContent = (
+  let renderMainContent = notFound ? (
+    <NotFound />
+  ) : (
+    <>
+      <div className='CountryPage__flagBox'>
+        <img src={country.flag} alt={`Flag of ${country.name}`} />
+      </div>
+      <div className='CountryPage__infoBox'>
+        <h2 className='CountryPage__heading-country'>{country.name}</h2>
+        <ul className='CountryPage__info'>
+          {info.map((i) => {
+            return (
+              <InfoRow title={Object.keys(i)[0]} value={Object.values(i)[0]} />
+            );
+          })}
+        </ul>
+      </div>
+    </>
+  );
+
+  return (
     <div className='CountryPage'>
       <Link to='./'>
         <button className='CountryPage__backButton'>
@@ -75,27 +101,10 @@ function CountryPage(props) {
         </button>
       </Link>
       <div className='CountryPage__container'>
-        <div className='CountryPage__flagBox'>
-          <img src={country.flag} alt={`Flag of ${country.name}`} />
-        </div>
-        <div className='CountryPage__infoBox'>
-          <h2 className='CountryPage__heading-country'>{country.name}</h2>
-          <ul className='CountryPage__info'>
-            {info.map((i) => {
-              return (
-                <InfoRow
-                  title={Object.keys(i)[0]}
-                  value={Object.values(i)[0]}
-                />
-              );
-            })}
-          </ul>
-        </div>
+        {isLoading ? <Loading /> : renderMainContent}
       </div>
     </div>
   );
-
-  return isLoading ? <Loading /> : renderMainContent;
 }
 
 export default CountryPage;

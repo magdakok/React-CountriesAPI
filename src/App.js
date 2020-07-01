@@ -41,12 +41,15 @@ function App() {
     setFilteredCountries(updatedCountries);
   };
 
-  const getCountry = (code) => {
-    async function getData() {
-      const response = await Axios.get(`${API_URL}alpha/${code}`);
-      return response.data;
+  const getCountry = async (code) => {
+    let response;
+    try {
+      response = await Axios.get(`${API_URL}alpha/${code}`);
+    } catch (error) {
+      response = false;
+    } finally {
+      return response;
     }
-    return getData();
   };
 
   let renderMainContent = (
