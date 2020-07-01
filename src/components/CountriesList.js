@@ -1,30 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CountryPreview from "./CountryPreview";
+import Loading from "./Loading";
 import "./../style/CountriesList.scss";
-
-const nCountriesToGet = 40;
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function CountriesList(props) {
   const { countries } = props;
+  const [displayed, setDisplayed] = useState(new Array(24).fill(null));
+
+  const fetchMoreData = () => {
+    setTimeout(() => {
+      setDisplayed(displayed.concat(Array.from({ length: 24 })));
+      //  setDisplayed(displayed.concat(Array.from({ length: 24 })));
+    }, 1500);
+  };
+
   return (
     <main className='CountriesList'>
-      {countries.map((c, i) => {
-        if (i < nCountriesToGet) {
-          return (
+      {!countries.length ? (
+        <Loading />
+      ) : (
+        <InfiniteScroll
+          dataLength={displayed.length}
+          next={fetchMoreData}
+          hasMore={true}
+          loader={<Loading />}>
+          {displayed.map((i, index) => (
             <CountryPreview
-              country={c.name}
-              flag={c.flag}
-              population={c.population}
-              region={c.subregion}
-              capital={c.capital}
-              key={c.alpha3Code}
-              id={c.alpha3Code}
+              country={countries[index].name}
+              flag={countries[index].flag}
+              population={countries[index].population}
+              region={countries[index].subregion}
+              capital={countries[index].capital}
+              key={countries[index].alpha3Code}
+              id={countries[index].alpha3Code}
             />
-          );
-        } else {
-          return;
-        }
-      })}
+          ))}
+        </InfiniteScroll>
+      )}
     </main>
   );
 }
