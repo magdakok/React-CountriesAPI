@@ -38,8 +38,11 @@
   &__info {
     height: 140px;
     line-height: 28px;
-    column-count: 2;
-    column-gap: 0px;
+
+    @media only screen and (min-width: 1200px) {
+      column-count: 2;
+      column-gap: 0px;
+    }
   }
 
   &__heading-country {
