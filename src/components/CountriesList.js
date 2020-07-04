@@ -7,19 +7,17 @@ function CountriesList(props) {
   return (
     <main className='CountriesList'>
       {countries.map((c, i) => {
-        if (i < 50) {
-          return (
-            <CountryPreview
-              country={c.name}
-              flag={c.flag}
-              population={c.population}
-              region={c.subregion}
-              capital={c.capital}
-              key={c.alpha3Code}
-              id={c.alpha3Code}
-            />
-          );
-        }
+        return (
+          <CountryPreview
+            country={c.name}
+            flag={c.flag}
+            population={c.population}
+            region={c.region}
+            capital={c.capital}
+            key={c.alpha3Code}
+            id={c.alpha3Code}
+          />
+        );
       })}
     </main>
   );
