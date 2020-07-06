@@ -1,9 +1,11 @@
 @import "./variables.scss";
 
 .CountriesList {
-  padding: 39px $horizontal-padding-mobile;
+  padding: 15px $horizontal-padding-mobile;
 
   @media only screen and (min-width: 400px) {
+    padding: 0 calc(#{$horizontal-padding-desktop} - 20px);
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

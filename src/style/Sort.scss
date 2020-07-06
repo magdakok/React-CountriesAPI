@@ -1,0 +1,22 @@
+@import "./variables.scss";
+.Sort {
+  padding: 0 $horizontal-padding-mobile;
+  @media only screen and (min-width: 700px) {
+    padding: 23px 0;
+  }
+
+  &__select {
+    width: 100%;
+    padding: 0 20px;
+    height: 50px;
+    font-family: inherit;
+    font-size: 12px;
+    color: $color-gray;
+    border: 1px solid transparent;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    @media only screen and (min-width: 700px) {
+      font-size: 14px;
+    }
+  }
+}

@@ -11,10 +11,12 @@
   justify-content: stretch;
   font-size: 14px;
   cursor: pointer;
+
   @media only screen and (min-width: 400px) {
-    width: 350px;
-    margin: 20px;
+    width: 265px;
+    margin: 32px;
   }
+
   &__box {
     height: 100%;
     display: flex;

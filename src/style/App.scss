@@ -1,3 +1,11 @@
+@import "./variables.scss";
 .App {
   height: 100vh;
+}
+
+.SearchSort__container {
+  @media only screen and (min-width: 700px) {
+    display: flex;
+    margin: 29px $horizontal-padding-desktop 0 $horizontal-padding-desktop;
+  }
 }
