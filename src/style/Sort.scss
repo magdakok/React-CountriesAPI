@@ -15,6 +15,13 @@
     border: 1px solid transparent;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
+    &--dark {
+      background-color: $color-blue-dark;
+      color: $color-white;
+      &::placeholder {
+        color: $color-white;
+      }
+    }
     @media only screen and (min-width: 700px) {
       font-size: 14px;
     }

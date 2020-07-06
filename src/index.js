@@ -5,11 +5,14 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "./style/base.scss";
 import "./style/typography.scss";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById("root")

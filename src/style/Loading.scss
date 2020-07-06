@@ -15,6 +15,9 @@
     box-shadow: $box-shadow;
     margin-bottom: 20px;
     animation: rotationRound 3s infinite linear;
+    &--dark {
+      color: $color-white;
+    }
   }
 }
 

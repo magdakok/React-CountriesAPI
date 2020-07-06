@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { ThemeContext } from "./../contexts/ThemeContext";
 import "./../style/Sort.scss";
 import useInputState from "../hooks/useInputState";
 
 function Sort(props) {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const [value, handleChange] = useInputState("nameAZ");
 
   useEffect(() => {
@@ -13,7 +15,11 @@ function Sort(props) {
     <div className='Sort'>
       <div className='Sort__container'>
         <form className='Sort__form' onSubmit={(e) => e.preventDefault()}>
-          <select className='Sort__select' onChange={handleChange}>
+          <select
+            className={
+              isDarkMode ? "Sort__select Sort__select--dark" : "Sort__select"
+            }
+            onChange={handleChange}>
             <option value='nameAZ'>Country name A-Z</option>
             <option value='nameZA'>Country name Z-A</option>
             <option value='populationLTH'>Population low to high</option>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CountriesList from "./components/CountriesList";
@@ -9,14 +9,16 @@ import Sort from "./components/Sort";
 import "./style/App.scss";
 import Axios from "axios";
 import Loading from "./components/Loading";
+import { ThemeContext } from "./contexts/ThemeContext";
 
 const API_URL = "https://restcountries.eu/rest/v2/";
 
-function App() {
+function App(props) {
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortType, setSortType] = useState("");
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     if (countries.length === 0) {
@@ -113,7 +115,7 @@ function App() {
   );
 
   return (
-    <div className='App'>
+    <div className={isDarkMode ? "App App--dark" : "App"}>
       <Navbar />
       <Switch>
         <Route

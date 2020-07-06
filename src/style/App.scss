@@ -1,6 +1,12 @@
 @import "./variables.scss";
 .App {
   height: 100vh;
+  color: $color-black;
+  background-color: $color-gray-light;
+  &--dark {
+    color: $color-white;
+    background-color: $color-blue-darker;
+  }
 }
 
 .SearchSort__container {

@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "./../contexts/ThemeContext";
 import CountryPreview from "./CountryPreview";
 import "./../style/CountriesList.scss";
 
 function CountriesList(props) {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const { countries } = props;
   return (
-    <main className='CountriesList'>
+    <main
+      className={
+        isDarkMode ? "CountriesList CountriesList--dark" : "CountriesList"
+      }>
       {countries.map((c, i) => {
         return (
           <CountryPreview

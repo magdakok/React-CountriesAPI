@@ -2,6 +2,10 @@
 
 .CountriesList {
   padding: 15px $horizontal-padding-mobile;
+  background-color: $color-gray-light;
+  &--dark {
+    background-color: $color-blue-darker;
+  }
 
   @media only screen and (min-width: 400px) {
     padding: 0 calc(#{$horizontal-padding-desktop} - 20px);

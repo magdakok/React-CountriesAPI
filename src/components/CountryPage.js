@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ThemeContext } from "./../contexts/ThemeContext";
 import { useParams, Link } from "react-router-dom";
 import Loading from "./Loading";
 import "./../style/CountryPage.scss";
@@ -6,6 +7,7 @@ import InfoRow from "./InfoRow";
 import NotFound from "./NotFound";
 
 function CountryPage(props) {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const [country, setCountry] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { code } = useParams();
@@ -64,14 +66,6 @@ function CountryPage(props) {
     return strings.join(", ");
   }
 
-  // function bordersToString(arr) {
-  //   let strings = [];
-  //   arr.forEach((el) => {
-  //     strings.push(`${el}`);
-  //   });
-  //   return strings.join(", ");
-  // }
-
   let renderMainContent = notFound ? (
     <NotFound />
   ) : (
@@ -99,7 +93,12 @@ function CountryPage(props) {
   return (
     <div className='CountryPage'>
       <Link to='./'>
-        <button className='CountryPage__backButton'>
+        <button
+          className={
+            isDarkMode
+              ? "CountryPage__backButton CountryPage__backButton--dark"
+              : "CountryPage__backButton"
+          }>
           <i className='fas fa-long-arrow-alt-left'></i> Back
         </button>
       </Link>

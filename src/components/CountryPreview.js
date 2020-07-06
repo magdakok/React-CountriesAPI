@@ -1,15 +1,20 @@
-import React from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { ThemeContext } from "./../contexts/ThemeContext";
+import { Link } from "react-router-dom";
 import "./../style/CountryPreview.scss";
 
 function CountryPreview(props) {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const populationWithComas = props.population
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return (
     <Link to={`${props.id}`}>
-      <div className='CountryPreview'>
+      <div
+        className={
+          isDarkMode ? "CountryPreview CountryPreview--dark" : "CountryPreview"
+        }>
         <img
           className='CountryPreview__flag'
           src={props.flag}

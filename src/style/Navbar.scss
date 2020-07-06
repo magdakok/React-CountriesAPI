@@ -11,6 +11,10 @@
   justify-content: space-between;
   align-items: center;
 
+  &--dark {
+    background-color: $color-blue-dark;
+  }
+
   @media only screen and (min-width: 700px) {
     padding: 0 $horizontal-padding-desktop;
   }
@@ -24,6 +28,7 @@
 
   .color-mode {
     font-size: 13px;
+    cursor: pointer;
     @media only screen and (min-width: 700px) {
       font-size: 17px;
     }
