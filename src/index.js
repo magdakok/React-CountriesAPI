@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "./style/base.scss";
@@ -8,13 +8,13 @@ import "./style/typography.scss";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <React.StrictMode>
       <ThemeProvider>
         <App />
       </ThemeProvider>
     </React.StrictMode>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById("root")
 );
 
