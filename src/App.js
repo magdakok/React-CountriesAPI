@@ -17,7 +17,7 @@ function App(props) {
   const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortType, setSortType] = useState("");
+  const [sortType, setSortType] = useState("nameAZ");
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ function App(props) {
       let sorted;
       switch (sortType) {
         case "nameAZ":
-          sorted = [...filteredCountries].sort((a, b) => {
+          sorted = [...countries].sort((a, b) => {
             if (a["name"] < b["name"]) {
               return -1;
             }
@@ -68,7 +68,7 @@ function App(props) {
           });
           break;
         case "nameZA":
-          sorted = [...filteredCountries].sort((a, b) => {
+          sorted = [...countries].sort((a, b) => {
             if (a["name"] > b["name"]) {
               return -1;
             }
@@ -79,16 +79,17 @@ function App(props) {
           });
           break;
         case "populationLTH":
-          sorted = [...filteredCountries].sort(
+          sorted = [...countries].sort(
             (a, b) => a["population"] - b["population"]
           );
           break;
         case "populationHTL":
-          sorted = [...filteredCountries].sort(
+          sorted = [...countries].sort(
             (a, b) => b["population"] - a["population"]
           );
           break;
       }
+      setCountries(sorted);
       setFilteredCountries(sorted);
     };
 
