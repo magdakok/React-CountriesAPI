@@ -36,10 +36,9 @@
   }
 
   &__info {
-    height: 140px;
     line-height: 28px;
-
     @media only screen and (min-width: 1200px) {
+      height: 140px;
       column-count: 2;
       column-gap: 0px;
     }
@@ -50,6 +49,12 @@
     margin-bottom: 24px;
     @media only screen and (min-width: 700px) {
       font-size: 33px;
+    }
+  }
+
+  &__borders {
+    span {
+      font-weight: 700;
     }
   }
   &__backButton {

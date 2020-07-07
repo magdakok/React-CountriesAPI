@@ -1,0 +1,27 @@
+@import "./variables.scss";
+
+.BorderButton__btn {
+  background-color: $color-white;
+  display: inline-block;
+  font-size: 13px;
+  color: inherit;
+  border: none;
+  box-shadow: $box-shadow;
+  padding: 5px 15px;
+  margin: 3px;
+  transition: all 0.2s;
+  cursor: pointer;
+  &--dark {
+    background-color: $color-blue-dark;
+  }
+  @media only screen and (min-width: 700px) {
+    padding: 5px 15px;
+    font-size: 16px;
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: $box-shadow;
+    transform: scale(1.03);
+  }
+}

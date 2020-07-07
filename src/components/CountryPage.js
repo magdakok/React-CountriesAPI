@@ -5,6 +5,7 @@ import Loading from "./Loading";
 import "./../style/CountryPage.scss";
 import InfoRow from "./InfoRow";
 import NotFound from "./NotFound";
+import BorderButton from "./BorderButton";
 
 function CountryPage(props) {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
@@ -45,7 +46,6 @@ function CountryPage(props) {
           Currencies: currenciesToString(country.currencies),
         },
         { Languages: languagesToString(country.languages) },
-        // { Borders: bordersToString(country.borders) },
       ]);
     }
   }, [isLoading]);
@@ -86,6 +86,13 @@ function CountryPage(props) {
             );
           })}
         </ul>
+        <div className='CountryPage__borders'>
+          <span>Borders: </span>
+          {country.borders &&
+            country.borders.map((c) => {
+              return <BorderButton country={c} getCountry={props.getCountry} />;
+            })}
+        </div>
       </div>
     </>
   );
