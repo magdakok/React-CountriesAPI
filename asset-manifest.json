@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/React-CountriesAPI/static/css/main.0bbf4e8a.chunk.css",
+    "main.css": "/React-CountriesAPI/static/css/main.94c6b1f3.chunk.css",
     "main.js": "/React-CountriesAPI/static/js/main.65936ac7.chunk.js",
     "main.js.map": "/React-CountriesAPI/static/js/main.65936ac7.chunk.js.map",
     "runtime-main.js": "/React-CountriesAPI/static/js/runtime-main.280ccb44.js",
@@ -8,15 +8,15 @@
     "static/js/2.c6e0d29a.chunk.js": "/React-CountriesAPI/static/js/2.c6e0d29a.chunk.js",
     "static/js/2.c6e0d29a.chunk.js.map": "/React-CountriesAPI/static/js/2.c6e0d29a.chunk.js.map",
     "index.html": "/React-CountriesAPI/index.html",
-    "precache-manifest.9c011108ad8f40246ed92e097de25712.js": "/React-CountriesAPI/precache-manifest.9c011108ad8f40246ed92e097de25712.js",
+    "precache-manifest.4dc482612f2ca11ba487edf90b58a917.js": "/React-CountriesAPI/precache-manifest.4dc482612f2ca11ba487edf90b58a917.js",
     "service-worker.js": "/React-CountriesAPI/service-worker.js",
-    "static/css/main.0bbf4e8a.chunk.css.map": "/React-CountriesAPI/static/css/main.0bbf4e8a.chunk.css.map",
+    "static/css/main.94c6b1f3.chunk.css.map": "/React-CountriesAPI/static/css/main.94c6b1f3.chunk.css.map",
     "static/js/2.c6e0d29a.chunk.js.LICENSE.txt": "/React-CountriesAPI/static/js/2.c6e0d29a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.280ccb44.js",
     "static/js/2.c6e0d29a.chunk.js",
-    "static/css/main.0bbf4e8a.chunk.css",
+    "static/css/main.94c6b1f3.chunk.css",
     "static/js/main.65936ac7.chunk.js"
   ]
 }
