@@ -7,7 +7,9 @@ function Navbar(props) {
   return (
     <nav className={isDarkMode ? "Navbar Navbar--dark" : "Navbar"}>
       <h1 className='main-heading'>Where in the world?</h1>
-      <div className='color-mode' onClick={toggleTheme}>
+      <div
+        className={isDarkMode ? "color-mode color-mode--dark" : "color-mode"}
+        onClick={toggleTheme}>
         <i className='fas fa-moon'></i> Dark Mode
       </div>
     </nav>

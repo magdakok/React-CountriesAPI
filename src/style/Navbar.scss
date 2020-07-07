@@ -28,7 +28,24 @@
 
   .color-mode {
     font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.2s;
     cursor: pointer;
+    &:hover,
+    &:active {
+      background-color: $color-gray-light;
+      box-shadow: $box-shadow;
+    }
+
+    &--dark {
+      &:hover,
+      &:active {
+        background-color: $color-blue-darker;
+        box-shadow: $box-shadow;
+      }
+    }
+
     @media only screen and (min-width: 700px) {
       font-size: 17px;
     }
