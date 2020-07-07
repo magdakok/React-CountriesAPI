@@ -1,6 +1,6 @@
 @import "./variables.scss";
 .App {
-  height: 100vh;
+  min-height: 100vh;
   color: $color-black;
   background-color: $color-gray-light;
   &--dark {
