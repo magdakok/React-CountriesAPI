@@ -16,6 +16,7 @@ function CountryPage(props) {
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     async function getData() {
       const newCountry = await props.getCountry(code);
       if (!newCountry) {
@@ -27,7 +28,7 @@ function CountryPage(props) {
       }
     }
     getData();
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     if (!isLoading && !notFound) {
@@ -99,6 +100,7 @@ function CountryPage(props) {
 
   return (
     <div className='CountryPage'>
+      {console.log("CountryPage rerenders with code: " + code)}
       <Link to='./'>
         <button
           className={
