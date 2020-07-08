@@ -100,7 +100,6 @@ function CountryPage(props) {
 
   return (
     <div className='CountryPage'>
-      {console.log("CountryPage rerenders with code: " + code)}
       <Link to='./'>
         <button
           className={
