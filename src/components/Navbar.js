@@ -10,7 +10,8 @@ function Navbar(props) {
       <div
         className={isDarkMode ? "color-mode color-mode--dark" : "color-mode"}
         onClick={toggleTheme}>
-        <i className='fas fa-moon'></i> Dark Mode
+        <i className='fas fa-moon'></i>{" "}
+        {isDarkMode ? "Light Mode" : "Dark Mode"}
       </div>
     </nav>
   );
