@@ -3,8 +3,9 @@
 ## :movie_camera: https://magdakok.github.io/React-CountriesAPI/#/
 
 **My first React API that pulls and displays country data from restcountries.eu**
-
-The app is build with Hooks, uses Context for dark/light theme. Router library syncs URL with current country page.
+- built with hooks
+- uses Context for dark/light theme and local storage to keep the choice
+- Router library syncs URL with current country page
 
 ### Setup
 
