@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./../style/CountryPreview.scss";
 
 function CountryPreview(props) {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
   const populationWithComas = props.population
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");

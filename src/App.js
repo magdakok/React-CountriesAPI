@@ -18,7 +18,7 @@ function App(props) {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortType, setSortType] = useState("nameAZ");
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     if (countries.length === 0) {

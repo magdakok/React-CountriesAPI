@@ -4,7 +4,7 @@ import "./../style/Search.scss";
 import useInputState from "./../hooks/useInputState";
 
 function Search(props) {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
   const [value, handleChange] = useInputState("");
 
   useEffect(() => {

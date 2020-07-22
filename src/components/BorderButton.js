@@ -4,7 +4,7 @@ import { ThemeContext } from "./../contexts/ThemeContext";
 import "./../style/BorderButton.scss";
 
 function BorderButton(props) {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
   const [countryName, setCountryName] = useState("Loading...");
 
   useEffect(() => {

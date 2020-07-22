@@ -4,7 +4,7 @@ import "./../style/Sort.scss";
 import useInputState from "../hooks/useInputState";
 
 function Sort(props) {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
   const [value, handleChange] = useInputState("nameAZ");
 
   useEffect(() => {

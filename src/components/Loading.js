@@ -3,7 +3,7 @@ import { ThemeContext } from "./../contexts/ThemeContext";
 import "./../style/Loading.scss";
 
 function Loading() {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
   return (
     <div className='Loading'>
       <i

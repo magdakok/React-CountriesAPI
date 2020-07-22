@@ -4,7 +4,7 @@ import CountryPreview from "./CountryPreview";
 import "./../style/CountriesList.scss";
 
 function CountriesList(props) {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
   const { countries } = props;
   return (
     <main

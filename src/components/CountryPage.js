@@ -8,7 +8,7 @@ import NotFound from "./NotFound";
 import BorderButton from "./BorderButton";
 
 function CountryPage(props) {
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
   const [country, setCountry] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { code } = useParams();
