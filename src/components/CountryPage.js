@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { ThemeContext } from "./../contexts/ThemeContext";
-import { useParams, Link } from "react-router-dom";
+import { useParams, withRouter } from "react-router-dom";
 import Loading from "./Loading";
 import "./../style/CountryPage.scss";
 import InfoRow from "./InfoRow";
@@ -100,16 +100,16 @@ function CountryPage(props) {
 
   return (
     <div className='CountryPage'>
-      <Link to='./'>
-        <button
-          className={
-            isDarkMode
-              ? "CountryPage__backButton CountryPage__backButton--dark"
-              : "CountryPage__backButton"
-          }>
-          <i className='fas fa-long-arrow-alt-left'></i> Back
-        </button>
-      </Link>
+      <button
+        onClick={props.history.goBack}
+        className={
+          isDarkMode
+            ? "CountryPage__backButton CountryPage__backButton--dark"
+            : "CountryPage__backButton"
+        }>
+        <i className='fas fa-long-arrow-alt-left'></i> Back
+      </button>
+
       <div className='CountryPage__container'>
         {isLoading ? <Loading /> : renderMainContent}
       </div>
@@ -117,4 +117,4 @@ function CountryPage(props) {
   );
 }
 
-export default CountryPage;
+export default withRouter(CountryPage);
